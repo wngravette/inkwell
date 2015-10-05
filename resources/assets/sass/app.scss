@@ -1,0 +1,145 @@
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.header {
+    margin-top: 1.2em;
+    margin-bottom: 1em;
+
+    h1.logo {
+        font-weight: 600;
+
+        span {
+            font-weight: 400;
+            color: #b8b8b8;
+
+            &.sep {
+                margin-left: 0.4em;
+                margin-right: 0.4em;
+            }
+
+            i {
+                font-size: 14px;
+                vertical-align: 3px;
+            }
+        }
+    };
+}
+
+.menu_btn {
+    cursor: pointer;
+
+    .caret_rotate {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+    }
+}
+
+.menu {
+    background-color: #f4f4f4;
+
+    h2 {
+        font-weight: 400;
+
+        span {
+            margin-right: 1.1em;
+
+            a:link, a:visited {
+                text-decoration: none;
+                color: black;
+            }
+        }
+    }
+}
+
+
+p.header {
+    font-size: 115%;
+    margin-top: 1.6em;
+
+    span {
+        margin-left: 0.6em;
+
+        i {
+            margin-left: 0.5em;
+        }
+    }
+}
+
+.intro {
+    margin-bottom: 1em;
+
+    h2 {
+        font-weight: 400;
+    }
+}
+
+textarea.pad {
+    border-style: none;
+    border-color: Transparent;
+    overflow: auto;
+    font-size: 16px;
+    padding: 0;
+    margin-bottom: 5em;
+    outline: none;
+    outline-color: transparent;
+    outline-style: none;
+    -webkit-appearance: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
+}
+
+p.pad {
+    font-size: 16px;
+}
+
+.entry_info {
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    background-color: white;
+
+    span.info_block {
+        margin-right: 1em;
+    }
+
+    p.stats {
+        font-size: 120%;
+        color: #acacac;
+
+        span.slash {
+            margin-left: 0.4em;
+            margin-right: 0.4em;
+        }
+    }
+}
+
+.entry_block {
+
+    .entry_menu {
+        margin-top: 0.4em;
+        float: none;
+    }
+
+    p {
+        &.entry_date {
+            font-size: 150%;
+            margin-bottom: 0;
+
+            span {
+                margin-left: 0.6em;
+            }
+
+            i {
+                font-size: 60%;
+                vertical-align: 2px;
+                margin-left: 0.3em;
+                cursor: pointer;
+            }
+        }
+        &.entry_details {
+            color: #8e8e8e;
+        }
+    }
+}
