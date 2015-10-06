@@ -29,9 +29,11 @@ class JournalController extends Controller
             $currentEntry->entry_uuid = Uuid::generate();
             $currentEntry->user_id = Auth::user()->id;
             $currentEntry->entry_date = Carbon::now()->format('Y-m-d');
+            $currentEntry->entry_body = Crypt::encrypt("");
             $currentEntry->save();
 
             $currentEntry = $user->entries()->where('entry_date', $entryDate)->first();
+            $currentEntry->entry_body = Crypt::decrypt($currentEntry->entry_body);
         }
 
         // $time_left = Carbon::now()->diffForHumans(Carbon::parse('tomorrow midnight'), true);
