@@ -79,7 +79,7 @@ class EntryController extends Controller
     {
         $entry = Entry::find($id);
         $user = Auth::user();
-        
+
         if ($user->id !== $entry->user_id) {
             abort(404);
         }
@@ -113,10 +113,14 @@ class EntryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Auth::check()) {
         $entry = Entry::find($id);
         $entry->entry_body = Crypt::encrypt($request->entry_body);
         $entry->word_count = intval($request->word_count);
         $entry->save();
+    } else {
+        return false;
+    }
     }
 
     /**
