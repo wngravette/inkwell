@@ -22,8 +22,10 @@
             $('.header').backstretch(["https://s3-ap-southeast-2.amazonaws.com/willng-me/journal/img/1.jpg",
                                         "https://s3-ap-southeast-2.amazonaws.com/willng-me/journal/img/2.jpg",
                                         "https://s3-ap-southeast-2.amazonaws.com/willng-me/journal/img/3.jpg",
-                                        "https://s3-ap-southeast-2.amazonaws.com/willng-me/journal/img/4.jpg"
-                                        ],{duration: 3000, fade: 750});
+                                        "https://s3-ap-southeast-2.amazonaws.com/willng-me/journal/img/4.jpg",
+                                        "https://s3-ap-southeast-2.amazonaws.com/willng-me/journal/img/5.jpg",
+                                        "https://s3-ap-southeast-2.amazonaws.com/willng-me/journal/img/6.jpg"
+                                    ],{duration: 3500, fade: 750});
         });
         </script>
     </head>
@@ -40,7 +42,7 @@
                 <div class="pure-u-1">
                     <div class="l-box hero">
                         <p>
-                            Journal is your secure, private, searchable and explorable journal.
+                            Journal is your secure, private, searchable and explorable journal. Free.
                         </p>
                     </div>
                 </div>
@@ -74,14 +76,21 @@
                 </div>
                 <div class="pure-u-1 pure-u-md-8-24">
                     <div class="l-box reason">
-
+                        <p>
+                            <i class="fa fa-smile-o"></i>
+                        </p>
                         <p class="lead">
-
+                            Helpful, or not
                         </p>
                         <p class="body">
-
+                            Would you like some inspiration? A prompt? Question? Something to go on? We'd be happy to get you sorted. Or, not at all. If you'd like to just write, go ahead.
                         </p>
                     </div>
+                </div>
+            </div>
+            <div class="pure-g img">
+                <div class="pure-u-1">
+                    <img class="pure-img" src="https://s3-ap-southeast-2.amazonaws.com/willng-me/journal/img/ui/1.jpg">
                 </div>
             </div>
         </div>
