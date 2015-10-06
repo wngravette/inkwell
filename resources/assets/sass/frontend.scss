@@ -1,0 +1,65 @@
+$font_stack: "jaf-facitweb", "proxima-nova", "freight-sans-pro", helvetica !default;
+
+body,
+h1,h2,h3,h4,h5,h6,
+p,span,
+form
+{
+    font-family: $font_stack
+}
+
+.l-box {
+    padding: 1em;
+}
+
+.container {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.header {
+    min-height: 450px;
+    h1 {
+        font-weight: 600;
+        color: white;
+    }
+    span.title {
+        color: #cfcfcf;
+        font-weight: 400;
+
+        span.sep {
+            margin: 0.5em;
+            margin-right: 0.5em;
+        }
+    }
+    span.cta {
+        float: right;
+
+        &:hover {
+            border-bottom: 4px solid white;
+        }
+    }
+}
+
+.hero {
+    p {
+        font-size: 150%;
+        text-align: center;
+    }
+}
+
+.reasons {
+    .reason {
+        p {
+            text-align: center;
+            &.lead {
+                font-size: 120%;
+            }
+            &.body {
+                font-size: 100%;
+                font-weight: 300;
+            }
+        }
+    }
+}

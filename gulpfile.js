@@ -14,5 +14,6 @@ elixir.config.production = true;
 
 elixir(function(mix) {
     mix.sass('app.scss')
+        .sass('frontend.scss')
         .sass('primer/primer.scss');
 });
