@@ -99,8 +99,11 @@ textarea.pad {
     resize: none;
 }
 
-p.pad {
-    font-size: 16px;
+.pad {
+    p {
+        font-size: 16px;
+        font-weight: 300;
+    }
 }
 
 .entry_info {

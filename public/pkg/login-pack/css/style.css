@@ -109,7 +109,10 @@ input {
   font-weight: 700;
   font-size: 16px;
   cursor: pointer;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
+
 .logmod__tabs li a:focus {
   outline: dotted 1px;
 }
