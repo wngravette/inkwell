@@ -13,21 +13,16 @@
 
 // Auth routes...
 Route::group(['prefix' => 'auth'], function () {
-    Route::get('login', 'Auth\AuthController@getLogin');
+    Route::get('login', 'FrontendController@login');
     Route::post('login', 'Auth\AuthController@postLogin');
     Route::get('logout', 'Auth\AuthController@getLogout');
-    Route::get('register', 'Auth\AuthController@getRegister');
+    Route::get('register', 'FrontendController@signup');
     Route::post('register', 'Auth\AuthController@postRegister');
 });
 
 // Frontend routes...
-Route::get('/', function () {
-    if (Auth::check()) {
-        return redirect('journal');
-    } else {
-        return view('front.home');
-    }
-});
+Route::get('/', 'FrontendController@home');
+
 
 // App routes...
 Route::group(['middleware' => 'auth', 'prefix' => 'journal'], function() {

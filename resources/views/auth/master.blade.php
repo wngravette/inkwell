@@ -5,9 +5,7 @@ $(document).ready(function() {
     $('.header').backstretch("https://s3-ap-southeast-2.amazonaws.com/willng-me/journal/img/7.jpg");
 });
 </script>
-<script src="{{asset('pkg/login-pack/js/index.js')}}">
-    var login_modal = true;
-</script>
+<script src="{{asset('pkg/login-pack/js/index.js')}}"></script>
 <link rel="stylesheet" href="{{asset('pkg/login-pack/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('pkg/login-pack/css/normalize.css')}}">
 @endsection
