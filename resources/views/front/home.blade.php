@@ -20,7 +20,7 @@ $(document).ready(function() {
     <div class="pure-u-1">
         <div class="l-box hero">
             <p>
-                Journal is your secure, private, searchable and explorable journal. Free.
+                Journal is for your secure, private, searchable and explorable writing. Free.
             </p>
         </div>
     </div>
@@ -107,7 +107,7 @@ $(document).ready(function() {
                 Shareable
             </p>
             <p class="body">
-                If you'd like to share your entries, or even just one entry, you can do that by setting your profile to public, or allowing certain entries to be publically accessible. 
+                If you'd like to share your entries, or even just one entry, you can do that by setting your profile to public, or allowing certain entries to be publically accessible.
             </p>
         </div>
     </div>
