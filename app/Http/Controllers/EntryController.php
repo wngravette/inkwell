@@ -85,6 +85,8 @@ class EntryController extends Controller
         }
 
         $entry->entry_body = Crypt::decrypt($entry->entry_body);
+        $entry->entry_body = preg_replace('/\n(\s*\n)+/', '</p><p>', $entry->entry_body);
+        $entry->entry_body = preg_replace('/\n/', '<br>', $entry->entry_body);
         $date = Carbon::parse($entry->entry_date)->format('l, jS F');
         return view('journal.dayview', [
                     'page_name' => $date,

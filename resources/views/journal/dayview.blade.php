@@ -8,7 +8,7 @@
 <div class="columns pad">
     <div class="single-column column">
         <p class="pad">
-            {{$entry->entry_body}}
+            {!! $entry->entry_body !!}
         </p>
     </div>
 </div>
