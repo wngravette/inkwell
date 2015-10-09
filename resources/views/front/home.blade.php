@@ -35,7 +35,7 @@ $(document).ready(function() {
                 Private
             </p>
             <p class="body">
-                Journal let's you be honest with your writing. With plenty of privacy features, you can set a screen-lock, custom password for entries, among other things.
+                Journal let's you be honest with your writing. Plenty of privacy features including a screen-lock mean that your writing is just for you.
             </p>
         </div>
     </div>
@@ -48,7 +48,7 @@ $(document).ready(function() {
                 Completely Secure
             </p>
             <p class="body">
-                Journal uses OpenSSL and the AES-256-CBC cipher method. This is all fancy-talk which means that the only person getting at your journal entries are you.
+                Journal uses OpenSSL and the AES-256-CBC cipher method. That all basically means that you are the only person getting at your Journal.
             </p>
         </div>
     </div>
@@ -61,7 +61,7 @@ $(document).ready(function() {
                 Helpful, or not
             </p>
             <p class="body">
-                Would you like some inspiration? A prompt? Question? Something to go on? We'd be happy to get you sorted. Or, not at all. If you'd like to just write, go ahead.
+                Need a prompt? Something to go on? We'd be happy to get you sorted. Or, not at all. If you'd like to just write, we won't get in the way.
             </p>
         </div>
     </div>
@@ -81,7 +81,7 @@ $(document).ready(function() {
                 Searchable
             </p>
             <p class="body">
-                A journal is good, but often you want to re-visit things. Journal let's you search by term, jump to date or simply explore through the past with each entry.
+                A journal is good, but often you want to re-visit things. Journal let's you search every entry, or jusp straight to a date.
             </p>
         </div>
     </div>
@@ -94,7 +94,7 @@ $(document).ready(function() {
                 Exportable
             </p>
             <p class="body">
-                If you want to save your entries, you can save them all to file quickly and easily. Save a single entry as a text file or PDF, or download your entire archive.
+                If you want to save your entries, you can save them all to file quickly and easily, or, download your entire archive.
             </p>
         </div>
     </div>
@@ -107,7 +107,7 @@ $(document).ready(function() {
                 Shareable
             </p>
             <p class="body">
-                If you'd like to share your entries, or even just one entry, you can do that by setting your profile to public, or allowing certain entries to be publically accessible.
+                By defauly, everything in your Journal is private, but you can allow people to see specific entries, on your entire profile.
             </p>
         </div>
     </div>
