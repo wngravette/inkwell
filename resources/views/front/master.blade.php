@@ -22,6 +22,7 @@
     <body>
         <div class="container">
             @yield('content')
+            @include('front.partials.footer')
         </div>
     </body>
 </html>

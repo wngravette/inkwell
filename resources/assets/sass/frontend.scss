@@ -94,3 +94,28 @@ form {
         }
     }
 }
+
+.footer {
+    margin-top: 8em;
+    background-color: #2d2d2d;
+    color: white;
+    p {
+        font-size: 90%;
+        margin-top: 0;
+        color: #e0e0e0;
+        font-weight: 300;
+        &.note {
+            font-size: 70%;
+        }
+    }
+    h1 {
+        font-size: 100%;
+        margin-bottom: 4em;
+        span {
+            font-size: 90%;
+            font-weight: 300;
+            color: #e0e0e0;
+            margin-left: 0.6em;
+        }
+    }
+}
