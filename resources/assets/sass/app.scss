@@ -114,6 +114,17 @@ textarea.pad {
 
     span.info_block {
         margin-right: 1em;
+
+        span.save {
+            span {
+                &.down {
+                    color: #e74c3c;
+                }
+                &.up {
+                    color: #27ae60;
+                }
+            }
+        }
     }
 
     p.stats {

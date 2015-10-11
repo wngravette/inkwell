@@ -1,6 +1,3 @@
-@extends('journal.master')
-@section('content')
-<script>
 $(document).ready(function() {
     $('textarea.pad').elastic();
 
@@ -71,7 +68,7 @@ $(document).ready(function() {
             var c = $("span.words").html();
             $.ajax({
                 method: "POST",
-                url: "/journal/entries/{{$todays_entry->id}}",
+                url: "/journal/entries/"+entry_id,
                 data: {
                     entry_body: entry_body,
                     word_count: c
@@ -81,47 +78,14 @@ $(document).ready(function() {
                 },
                 statusCode: {
                     503: function() {
-                        $save_block.html('<span class="down">Journal is down, but keep typing. If this message doesn\'t go away, be sure to backup your entry.</span>');
+                        $save_block.html('<span class="down">Journal is down. If this message doesn\'t go away, be sure to backup your entry.</span>');
                     }
                 },
                 success: function() {
-                    $save_block.html('<span class="up">Saved.</span>');
+                    $save_block.html('<span>Saved.</span>');
                 }
             });
         }, 1000 );
     });
 
 });
-</script>
-<div class="columns intro">
-    <div class="single-column column">
-        <h2>It's {{$date}}, and
-            @if(!$todays_entry)
-            you do not have an entry for today.
-            @else
-            you've written <span class="init_words">no</span> words for today.
-            @endif
-        </h2>
-        <h2>You've got <span class="timeago" title="{{$midnight}}"></span> until writing closes for today.</h2>
-    </div>
-</div>
-<div class="columns pad">
-    <div class="single-column column">
-        <textarea id="pad" name="entry_body" class="pad input-block" cols="90" autofocus placeholder="Begin your journal for today...">@if($todays_entry){{$todays_entry->entry_body}}@endif</textarea>
-    </div>
-</div>
-<div class="columns info">
-    <div class="single-column column entry_info">
-        <p class="stats">
-            <span class="info_block">
-                <span class="words">0</span>
-                <span class="slash">/</span>
-                <span class="tooltipped tooltipped-n" aria-label="Your recommended word count goal.">500</span> words</span>
-                <span class="info_block">
-                    <span class="save"></span>
-                </span>
-            </span>
-        </p>
-    </div>
-</div>
-@endsection
