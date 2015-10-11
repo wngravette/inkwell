@@ -1,7 +1,7 @@
 <div class="pure-g footer">
     <div class="pure-u-1">
         <div class="l-box">
-            <h1>Journal<span>by William Naughton-Gravette</span></h1>
+            <h1>Journal<span>{{env('SEMVER')}}</span></h1>
         </div>
     </div>
     <div class="pure-u-8-24">
