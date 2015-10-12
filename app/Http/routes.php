@@ -32,4 +32,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'journal'], function() {
     Route::post('entries', 'EntryController@store');
     Route::get('entries/{id}', 'EntryController@show');
     Route::post('entries/{id}', 'EntryController@update');
+    Route::get('entries/handle/{date}', 'EntryController@findByDate');
+});
+
+// User API routes...
+Route::group(['middleware' => 'auth', 'prefix' => 'api/user'], function() {
+    Route::get('contribs', 'APIController@contribs');
 });
