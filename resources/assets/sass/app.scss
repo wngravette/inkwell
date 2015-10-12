@@ -1,5 +1,7 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+$entry-font-size: 20px;
+
 .header {
     margin-top: 1.2em;
     margin-bottom: 1em;
@@ -85,7 +87,7 @@ textarea.pad {
     border-style: none;
     border-color: Transparent;
     overflow: auto;
-    font-size: 16px;
+    font-size: $entry-font-size;
     font-weight: 300;
     padding: 0;
     margin-bottom: 5em;
@@ -101,7 +103,7 @@ textarea.pad {
 
 .pad {
     p {
-        font-size: 16px;
+        font-size: $entry-font-size;
         font-weight: 300;
     }
 }
