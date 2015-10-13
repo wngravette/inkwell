@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Something isn\'t quite right there!',
+    'failed'   => 'Something isn\'t quite right there!',
     'throttle' => 'Cool your jets. Try again in :seconds seconds.',
 
 ];
