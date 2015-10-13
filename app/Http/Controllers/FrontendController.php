@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
 {
@@ -20,11 +17,11 @@ class FrontendController extends Controller
 
     public function signup()
     {
-        return view('auth.register', ['page_name' => 'Sign Up', 'sign_up_btn' => false, 'page_name_on' => false, 'login_state' => "signup"]);
+        return view('auth.register', ['page_name' => 'Sign Up', 'sign_up_btn' => false, 'page_name_on' => false, 'login_state' => 'signup']);
     }
 
     public function login()
     {
-        return view('auth.login', ['page_name' => 'Login', 'sign_up_btn' => false, 'page_name_on' => false, 'login_state' => "login"]);
+        return view('auth.login', ['page_name' => 'Login', 'sign_up_btn' => false, 'page_name_on' => false, 'login_state' => 'login']);
     }
 }

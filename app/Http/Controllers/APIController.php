@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Entry;
 use App\User;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Auth;
 
 class APIController extends Controller
 {

@@ -6,11 +6,8 @@ use App\Entry;
 use Auth;
 use Carbon\Carbon;
 use Crypt;
-use Uuid;
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
+use Uuid;
 
 class EntryController extends Controller
 {
@@ -27,9 +24,9 @@ class EntryController extends Controller
             $entry_date = Carbon::parse($entry->entry_date);
 
             if ($entry_date == Carbon::today()) {
-                $entry->entry_status = "open";
+                $entry->entry_status = 'open';
             } else {
-                $entry->entry_status = "closed";
+                $entry->entry_status = 'closed';
             }
 
             $start_time = Carbon::parse($entry->created_at);
@@ -39,7 +36,7 @@ class EntryController extends Controller
 
         return view('journal.entries', [
             'page_name' => 'Entries',
-            'entries' => $entries,
+            'entries'   => $entries,
             ]);
     }
 
@@ -56,12 +53,13 @@ class EntryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $entry = new Entry;
+        $entry = new Entry();
         $entry->entry_uuid = Uuid::generate();
         $entry->user_id = Auth::user()->id;
         $entry->entry_date = Carbon::now()->format('Y-m-d');
@@ -72,7 +70,8 @@ class EntryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -88,17 +87,19 @@ class EntryController extends Controller
         $entry->entry_body = preg_replace('/\n(\s*\n)+/', '</p><p>', $entry->entry_body);
         $entry->entry_body = preg_replace('/\n/', '<br>', $entry->entry_body);
         $date = Carbon::parse($entry->entry_date)->format('l, jS F');
+
         return view('journal.dayview', [
                     'page_name' => $date,
-                    'entry' => $entry,
-                    'date' => $date,
+                    'entry'     => $entry,
+                    'date'      => $date,
                 ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -109,26 +110,28 @@ class EntryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         if (Auth::check()) {
-        $entry = Entry::find($id);
-        $entry->entry_body = Crypt::encrypt($request->entry_body);
-        $entry->word_count = intval($request->word_count);
-        $entry->save();
-    } else {
-        return false;
-    }
+            $entry = Entry::find($id);
+            $entry->entry_body = Crypt::encrypt($request->entry_body);
+            $entry->word_count = intval($request->word_count);
+            $entry->save();
+        } else {
+            return false;
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -140,6 +143,7 @@ class EntryController extends Controller
     {
         $entry_date = Carbon::parse($date)->toDateString();
         $entry = Entry::where('user_id', Auth::user()->id)->where('entry_date', $entry_date)->first();
+
         return redirect('journal/entries/'.$entry->id);
     }
 }

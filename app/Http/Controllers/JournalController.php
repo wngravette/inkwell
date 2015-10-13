@@ -8,9 +8,6 @@ use Auth;
 use Carbon\Carbon;
 use Crypt;
 use Uuid;
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 class JournalController extends Controller
 {
@@ -25,11 +22,11 @@ class JournalController extends Controller
         if ($currentEntry) {
             $currentEntry->entry_body = Crypt::decrypt($currentEntry->entry_body);
         } else {
-            $currentEntry = new Entry;
+            $currentEntry = new Entry();
             $currentEntry->entry_uuid = Uuid::generate();
             $currentEntry->user_id = Auth::user()->id;
             $currentEntry->entry_date = Carbon::now()->format('Y-m-d');
-            $currentEntry->entry_body = Crypt::encrypt("");
+            $currentEntry->entry_body = Crypt::encrypt('');
             $currentEntry->save();
 
             $currentEntry = $user->entries()->where('entry_date', $entryDate)->first();
@@ -40,11 +37,11 @@ class JournalController extends Controller
         $midnight = Carbon::parse('tomorrow midnight')->format('c');
 
         return view('journal.home', [
-                'date' => $date,
+                'date'         => $date,
                 'todays_entry' => $currentEntry,
                 // 'time_left' => $time_left,
-                'midnight' => $midnight,
-                'page_name' => 'Home'
+                'midnight'  => $midnight,
+                'page_name' => 'Home',
             ]);
     }
 }
