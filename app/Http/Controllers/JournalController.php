@@ -47,4 +47,72 @@ class JournalController extends Controller
                 'page_name' => 'Home'
             ]);
     }
+
+    public function stats()
+    {
+        $words_this_month = [];
+        $words_last_month = [];
+        $avg_finish = [];
+        $avg_time = [];
+        $entry_bodies = [];
+        $common_words = [
+                'the',
+                'I',
+                'you',
+                'to',
+                'that',
+                'of',
+                'is',
+                'and'
+            ];
+
+        $entries_this_month =  Auth::user()->entries()->where('created_at', '>=', Carbon::now()->startOfMonth())->get();
+        foreach ($entries_this_month as $entry) {
+            array_push($words_this_month, $entry->word_count);
+            $entry_fin = Carbon::parse($entry->updated_at)->format('Gi');
+            array_push($avg_finish, $entry_fin);
+            $start_time = Carbon::parse($entry->created_at);
+            $finish_time = Carbon::parse($entry->updated_at);
+            $time_taken = $start_time->diffInSeconds($finish_time);
+            array_push($avg_time, $time_taken);
+            array_push($entry_bodies, Crypt::decrypt($entry->entry_body));
+        }
+
+        $words_written_array = str_word_count(implode($entry_bodies), 1);
+        $noncommon_words_written = array_diff($words_written_array, $common_words);
+        $word_occ_counts = array_count_values($noncommon_words_written);
+        arsort($word_occ_counts);
+        $word_occ_counts = array_splice($word_occ_counts, 0, 5);
+
+        $last_month_start = Carbon::parse('first day of last month');
+        $last_month_end = Carbon::parse('last day of last month');
+        $entries_last_month = Auth::user()->entries()->whereBetween('created_at', [$last_month_start, $last_month_end])->get();
+        foreach ($entries_last_month as $entry) {
+            array_push($words_last_month, $entry->word_count);
+        }
+
+        $avg_fin_time = round(collect($avg_finish)->avg());
+        $avg_fin_time = Carbon::createFromFormat('Gi', $avg_fin_time)->format('g:i a');
+
+        $avg_time = collect($avg_time)->avg();
+        $avg_time = gmdate("h\h i\m", $avg_time);
+        $avg_time = ltrim($avg_time, '0');
+
+        $avg_words = round(collect($words_this_month)->avg());
+
+        $word_count = collect($words_this_month)->sum();
+        $previous_word_count = collect($words_last_month)->sum();
+
+
+        return view('journal.stats', [
+                'word_count' => $word_count,
+                'word_counts' => $words_this_month,
+                'prev_word_count' => $previous_word_count,
+                'avg_fin' => $avg_fin_time,
+                'avg_time' => $avg_time,
+                'avg_words' => $avg_words,
+                'common_words' => $word_occ_counts,
+                'page_name' => 'Stats'
+            ]);
+    }
 }
