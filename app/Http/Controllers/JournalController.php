@@ -55,16 +55,7 @@ class JournalController extends Controller
         $avg_finish = [];
         $avg_time = [];
         $entry_bodies = [];
-        $common_words = [
-                'the',
-                'I',
-                'you',
-                'to',
-                'that',
-                'of',
-                'is',
-                'and'
-            ];
+        $common_words = ['the','to','that','of','is','and','a','it','in','at','be'];
 
         $entries_this_month =  Auth::user()->entries()->where('created_at', '>=', Carbon::now()->startOfMonth())->get();
         foreach ($entries_this_month as $entry) {
