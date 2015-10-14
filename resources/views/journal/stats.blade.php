@@ -12,19 +12,19 @@
         <p>
             Words this Month
         </p>
-        <h1>{{$word_count}}</h1>
+        <h1>{{number_format($word_count)}}</h1>
     </div>
     <div class="column one-fifth stats_block">
         <p>
             Words last Month
         </p>
-        <h1>{{$prev_word_count}}</h1>
+        <h1>{{number_format($prev_word_count)}}</h1>
     </div>
     <div class="column one-fifth stats_block">
         <p>
             Average Words per Entry
         </p>
-        <h1>{{$avg_words}}</h1>
+        <h1>{{number_format($avg_words)}}</h1>
     </div>
     <div class="column one-fifth stats_block">
         <p>
