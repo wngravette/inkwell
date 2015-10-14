@@ -29,7 +29,7 @@ $('.entry_menu').hide();
                 </p>
                 <div id="{{$entry->id}}" class="entry_menu menu one-third column">
                     <p>
-                        <span><a href="/journal/entries/{{$entry->id}}">/ View</a></span>
+                        <span><a class="btn" href="/journal/entries/{{$entry->id}}" role="button">View</a></span>
                     </p>
                 </div>
                 <p class="entry_details">{{$entry->word_count}} words &middot; Took {{$entry->time_taken}} to write.</p>
@@ -38,15 +38,15 @@ $('.entry_menu').hide();
     </div>
     <div class="column one-third entries_nav right">
         <div id="cal-heatmap"></div>
-        <div id="onClick-placeholder">
-
-        </div>
+        <button id="previousSelector-a-previous" class="btn btn-sm" type="button"><i class="fa fa-chevron-up"></i></button>
+        <button id="nextSelector-a-next" class="btn btn-sm" type="button"><i class="fa fa-chevron-down"></i></button>
         <script type="text/javascript">
         	var cal = new CalHeatMap();
             var start_date = new Date();
             start_date.setDate(1);
-            start_date.setMonth(start_date.getMonth()-2);
+            start_date.setMonth(start_date.getMonth()-1);
             cal.init({
+                itemName: ["word", "words"],
             	itemSelector: "#cal-heatmap",
             	domain: "month",
             	subDomain: "x_day",
@@ -54,7 +54,7 @@ $('.entry_menu').hide();
             	cellSize: 25,
                 subDomainTextFormat: "%d",
                 start: start_date,
-            	range: 3,
+            	range: 2,
             	displayLegend: false,
                 label: {
             		position: "top",
@@ -67,7 +67,9 @@ $('.entry_menu').hide();
                 data: "/api/user/contribs",
                 onClick: function(date, nb) {
         	        window.location.replace('/journal/entries/handle/'+date);
-            	}
+            	},
+                previousSelector: "#previousSelector-a-previous",
+                nextSelector: "#nextSelector-a-next"
             });
         </script>
     </div>
