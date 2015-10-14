@@ -142,6 +142,9 @@ textarea.pad {
 
 .entry_block {
 
+    display: block;
+    float: none;
+
     .entry_menu {
         margin-top: 0.4em;
         float: none;
@@ -165,6 +168,44 @@ textarea.pad {
         }
         &.entry_details {
             color: #8e8e8e;
+        }
+    }
+}
+
+.entries_nav {
+    #cal-heatmap {
+        margin-bottom: 10px;
+    }
+    .btn {
+        i {
+            opacity: 1;
+        }
+    }
+}
+
+.stats {
+    .stats_block {
+        p {
+            color: #8e8e8e;
+        }
+        &.common_words {
+            p {
+                &:nth-child(2) {
+                    color: #1a1a1a;
+                }
+                &:nth-child(3) {
+                    color: #4d4d4d;
+                }
+                &:nth-child(4) {
+                    color: #7f7f7f;
+                }
+                &:nth-child(5) {
+                    color: #999;
+                }
+                &:nth-child(6) {
+                    color: #b3b3b3;
+                }
+            }
         }
     }
 }
