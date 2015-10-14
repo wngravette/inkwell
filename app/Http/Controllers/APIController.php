@@ -16,7 +16,7 @@ class APIController extends Controller
     {
         if (Auth::check()) {
             $user = User::find(Auth::user()->id);
-            $entries = $user->entries;
+            $entries = $user->entries()->where('word_count', '>', 0)->get();
             $contribs = [];
             $value = 1;
 
