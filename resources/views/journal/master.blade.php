@@ -13,6 +13,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="{{asset('js/elastic.js')}}"></script>
         <script src="{{asset('js/timeago.js')}}"></script>
+        <script src="{{asset('js/highcharts.js')}}"></script>
+        <script src="{{asset('js/chart-themes/gray.js')}}"></script>
         <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
         <title>Journal / {{$page_name}}</title>
