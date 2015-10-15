@@ -7,10 +7,10 @@
     <div class="pure-u-8-24">
         <div class="l-box">
             <p>
-                About
+                <a href="about">About</a>
             </p>
             <p>
-                Your Privacy
+                <a href="privacy">Your Privacy</a>
             </p>
             <p>
                 Journal's Security
@@ -30,7 +30,7 @@
     <div class="pure-u-8-24">
         <div class="l-box">
             <p class="note">
-                Journal is open-source. If you'd like to review the code, or report bugs, make feature requests or even extend Journal yourself, click here to find us on GitHub.
+                Journal is open-source, and open-scrutiny. If you'd like to review the code, or report bugs, make feature requests or even extend Journal yourself, click <a href="https://github.com/wngravette/journal">here</a> to find us on GitHub.
             </p>
             <p class="note">
                 Thanks for using Journal.

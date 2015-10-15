@@ -22,7 +22,10 @@ Route::group(['prefix' => 'auth'], function () {
 
 // Frontend routes...
 Route::get('/', 'FrontendController@home');
-
+Route::get('about', 'FrontendController@about');
+Route::get('privacy', 'FrontendController@privacy');
+Route::get('security', 'FrontendController@security');
+Route::get('support-journal', 'FrontendController@support');
 
 // App routes...
 Route::group(['middleware' => 'auth', 'prefix' => 'journal'], function() {

@@ -81,6 +81,9 @@ form {
 }
 
 .reasons {
+    p.note {
+        font-size: 75%;
+    }
     .reason {
         p {
             text-align: center;
@@ -90,6 +93,20 @@ form {
             &.body {
                 font-size: 100%;
                 font-weight: 300;
+            }
+        }
+    }
+    .generic {
+        p {
+            &.lead {
+                font-size: 120%;
+            }
+            &.body {
+                font-size: 100%;
+                font-weight: 300;
+            }
+            &.code {
+                word-wrap: break-word;
             }
         }
     }
@@ -105,7 +122,12 @@ form {
         color: #e0e0e0;
         font-weight: 300;
         &.note {
-            font-size: 70%;
+            font-size: 75%;
+            a {
+                &:link {
+                    border-bottom: 1px solid white;
+                }
+            }
         }
     }
     h1 {
