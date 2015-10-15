@@ -4,7 +4,7 @@
             <h1>Journal<span>{{config('app.semver')}}</span></h1>
         </div>
     </div>
-    <div class="pure-u-8-24">
+    <div class="pure-u-10-24 pure-u-lg-8-24">
         <div class="l-box">
             <p>
                 <a href="about">About</a>
@@ -20,14 +20,14 @@
             </p>
         </div>
     </div>
-    <div class="pure-u-8-24">
+    <div class="pure-u-1-24 pure-u-lg-8-24">
         <div class="l-box">
             <p>
 
             </p>
         </div>
     </div>
-    <div class="pure-u-8-24">
+    <div class="pure-u-13-24 pure-u-lg-8-24">
         <div class="l-box">
             <p class="note">
                 Journal is open-source, and open-scrutiny. If you'd like to review the code, or report bugs, make feature requests or even extend Journal yourself, click <a href="https://github.com/wngravette/journal">here</a> to find us on GitHub.

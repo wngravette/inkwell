@@ -54,6 +54,10 @@ form {
         color: #cfcfcf;
         font-weight: 400;
 
+        @media screen and (max-width: 568px) {
+            display: none;
+        }
+
         span.sep {
             margin: 0.5em;
             margin-right: 0.5em;
