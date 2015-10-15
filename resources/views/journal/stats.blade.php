@@ -7,6 +7,11 @@
         <h2>Your Writing Stats</h2>
     </div>
 </div>
+@if ($stats_disabled)
+<div class="flash">
+  Stats will become available once you write a couple of entries.
+</div>
+@else
 <div class="columns stats">
     <div class="column one-fifth stats_block">
         <p>
@@ -153,4 +158,5 @@
         <div id="highchart" style="height:200px"></div>
     </div>
 </div>
+@endif
 @endsection

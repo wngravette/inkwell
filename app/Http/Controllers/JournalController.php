@@ -50,6 +50,12 @@ class JournalController extends Controller
 
     public function stats()
     {
+        if (Auth::user()->entries()->count() <= 20) {
+            return view('journal.stats', [
+                    'stats_disabled' => true,
+                    'page_name' => 'Stats'
+                ]);
+        } else {
         $words_this_month = [];
         $words_last_month = [];
         $avg_finish = [];
@@ -104,7 +110,9 @@ class JournalController extends Controller
                 'avg_time' => $avg_time,
                 'avg_words' => $avg_words,
                 'common_words' => $word_occ_counts,
+                'stats_disabled' => false,
                 'page_name' => 'Stats'
             ]);
+        }
     }
 }
