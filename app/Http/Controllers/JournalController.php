@@ -50,7 +50,7 @@ class JournalController extends Controller
 
     public function stats()
     {
-        if (Auth::user()->entries()->count() <= 20) {
+        if (Auth::user()->entries()->count() <= 2) {
             return view('journal.stats', [
                     'stats_disabled' => true,
                     'page_name' => 'Stats'
