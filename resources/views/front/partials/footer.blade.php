@@ -13,10 +13,10 @@
                 <a href="privacy">Your Privacy</a>
             </p>
             <p>
-                Journal's Security
+                {{config('app.app_name')}}'s Security
             </p>
             <p>
-                Supporting Journal
+                Supporting {{config('app.app_name')}}
             </p>
         </div>
     </div>
