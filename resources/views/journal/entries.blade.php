@@ -29,10 +29,16 @@ $('.entry_menu').hide();
                 </p>
                 <div id="{{$entry->id}}" class="entry_menu menu one-third column">
                     <p>
-                        <span><a class="btn" href="/journal/entries/{{$entry->id}}" role="button">View</a></span>
+                        <span>
+                        @if ($entry->entry_status == "open")
+                        <a class="btn" href="/journal" role="button">Write</a>
+                        @else
+                        <a class="btn" href="/journal/entries/{{$entry->id}}" role="button">View</a>
+                        @endif
+                        </span>
                     </p>
                 </div>
-                <p class="entry_details">{{$entry->word_count}} words &middot; Took {{$entry->time_taken}} to write.</p>
+                <p class="entry_details">{{number_format($entry->word_count)}} words &middot; Took {{$entry->time_taken}} to write.</p>
             </div>
         @endforeach
     </div>
