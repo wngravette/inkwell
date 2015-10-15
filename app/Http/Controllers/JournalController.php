@@ -59,7 +59,8 @@ class JournalController extends Controller
 
         $entries_this_month =  Auth::user()->entries()->where('created_at', '>=', Carbon::now()->startOfMonth())->get();
         foreach ($entries_this_month as $entry) {
-            array_push($words_this_month, $entry->word_count);
+            $parsed_date = Carbon::createFromFormat('Y-m-d', $entry->entry_date)->format('M. j');
+            $words_this_month[$parsed_date] = $entry->word_count;
             $entry_fin = Carbon::parse($entry->updated_at)->format('Gi');
             array_push($avg_finish, $entry_fin);
             $start_time = Carbon::parse($entry->created_at);
@@ -73,7 +74,7 @@ class JournalController extends Controller
         $noncommon_words_written = array_diff($words_written_array, $common_words);
         $word_occ_counts = array_count_values($noncommon_words_written);
         arsort($word_occ_counts);
-        $word_occ_counts = array_splice($word_occ_counts, 0, 5);
+        $word_occ_counts = array_splice($word_occ_counts, 0, 6);
 
         $last_month_start = Carbon::parse('first day of last month');
         $last_month_end = Carbon::parse('last day of last month');
