@@ -91,7 +91,7 @@
         <div id="highchart" style="height:150px"></div>
     </div>
     -->
-    <div class="column one-third stats_block common_words">
+    <div class="column one-fifth stats_block common_words">
         <p>
             Most Common Words
         </p>
@@ -100,6 +100,57 @@
             {{$word}}
         </p>
         @endforeach
+    </div>
+    <div class="column one-third stats_block common_words">
+        <p>
+            Words by Day
+        </p>
+        <script>
+        $(function () {
+            $('#highchart').highcharts({
+                chart: {
+                    type: 'spline'
+                },
+                xAxis: {
+                    categories: [
+                        @foreach ($word_counts as $date => $word_count)
+                        '{{$date}}',
+                        @endforeach
+                    ],
+                    labels: {
+                        enabled: true,
+                        y: 25
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Words'
+                    },
+                    labels: {
+                        enabled: true,
+                        format: '{value} words',
+                    },
+                    min: 0
+                },
+                tooltip: {
+                    valueSuffix: ''
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                },
+                series: [{
+                    name: 'Words',
+                    data: [
+                        @foreach ($word_counts as $date => $word_count)
+                        {{$word_count}},
+                        @endforeach
+                    ]
+                }]
+            });
+        });
+        </script>
+        <div id="highchart" style="height:200px"></div>
     </div>
 </div>
 @endsection
