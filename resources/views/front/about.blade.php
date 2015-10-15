@@ -12,7 +12,7 @@ $(document).ready(function() {
     <div class="pure-u-1">
         <div class="l-box hero">
             <p>
-                Journal is a palce to write every day. It's secure, it's private, and it's free.
+                {{config('app.app_name')}} is a palce to write every day. It's secure, it's private, and it's free.
             </p>
         </div>
     </div>
@@ -34,7 +34,7 @@ $(document).ready(function() {
     <div class="pure-u-1 pure-u-md-9-24">
         <div class="l-box generic">
             <p class="lead">
-                Journal is free.
+                {{config('app.app_name')}} is free.
             </p>
             <p class="body">
                 But it can't operate with support. If you'd like to support us, please, click here.
@@ -52,7 +52,7 @@ $(document).ready(function() {
                 Searchable
             </p>
             <p class="body">
-                A journal is good, but often you want to re-visit things. Journal let's you search every entry, or jusp straight to a date.
+                A journal is good, but often you want to re-visit things. {{config('app.app_name')}} let's you search every entry, or jusp straight to a date.
             </p>
         </div>
     </div>
@@ -65,7 +65,7 @@ $(document).ready(function() {
                 Private
             </p>
             <p class="body">
-                Journal has lots of fancy security features to do all we can to stop anyone getting at your journasl entries. Among them, SSL encryption as well as the use of the AES-256-CBC cipher method.
+                {{config('app.app_name')}} has lots of fancy security features to do all we can to stop anyone getting at your journal entries. Among them, SSL encryption as well as the use of the AES-256-CBC cipher method.
             </p>
         </div>
     </div>
@@ -78,7 +78,7 @@ $(document).ready(function() {
                 Shareable
             </p>
             <p class="body">
-                By defauly, everything in your Journal is private, but you can allow people to see specific entries, on your entire profile.
+                By default, everything in your {{config('app.app_name')}} is private, but you can allow people to see specific entries, on your entire profile.
             </p>
         </div>
     </div>

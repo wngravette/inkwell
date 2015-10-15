@@ -24,10 +24,10 @@ $(document).ready(function() {
                 Your writing is encrypted, and no method exists for us to decrypt it.
             </p>
             <p class="body">
-                Journal never stores your writing unencrypted. If it's saved to our databases, it's encrypted. Encryption of the writing happens server-side, and SSL protects your writing on it's way to us.
+                {{config('app.app_name')}} never stores your writing unencrypted. If it's saved to our databases, it's encrypted. Encryption of the writing happens server-side, and SSL protects your writing on it's way to us.
             </p>
             <p class="body">
-                Journal also encrypts all session and cookie data, and it does a good job to protect what you can send to the servers which means someone trying to stop is going to have a hard time trying to pretend to be you. And of course, your password is encrypted just as thoroughly as your writing.
+                {{config('app.app_name')}} also encrypts all session and cookie data, and it does a good job to protect what you can send to the servers which means someone trying to stop is going to have a hard time trying to pretend to be you. And of course, your password is encrypted just as thoroughly as your writing.
             </p>
         </div>
     </div>
@@ -37,13 +37,13 @@ $(document).ready(function() {
     <div class="pure-u-1 pure-u-md-9-24">
         <div class="l-box generic">
             <p class="lead">
-                Here's a Journal entry to us:
+                Here's an {{config('app.app_name')}} entry to us:
             </p>
             <p class="body code">
                 BYm1VazAwRzFwVDc3YT3ajJZVzFjVm9OQ1ZRaDNKVXVpVjdtT3pzTEg2Z215Q1NMaWJ2aG4UDk4aGVodBQNno4YzNiem1JSjM5Vkl1QU5QXpYdHdIeVI4VlBIenFjcHA5dFBPZFVxK09KcTVQ0JiWHplMjBOMG9OTZNeFJITnQ0ZytuZFBuelaN2w0aVF3Z3RCUmNSZUlzWlVzNWxlVXVDa
             </p>
             <p class="note">
-                Actual encrypted Journal entry
+                Actual encrypted {{config('app.app_name')}} entry
             </p>
         </div>
     </div>

@@ -17,7 +17,7 @@
         <script src="{{asset('js/chart-themes/gray.js')}}"></script>
         <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
-        <title>Journal / {{$page_name}}</title>
+        <title>{{config('app.app_name')}} / {{$page_name}}</title>
         @yield('additional_head')
         <script>
         $(document).ready(function() {
