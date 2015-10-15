@@ -15,8 +15,7 @@ class APIController extends Controller
     public function contribs()
     {
         if (Auth::check()) {
-            $user = User::find(Auth::user()->id);
-            $entries = $user->entries()->where('word_count', '>', 0)->get();
+            $entries = Auth::user()->entries()->where('word_count', '>', 0)->get();
             $contribs = [];
             $value = 1;
 
@@ -26,6 +25,8 @@ class APIController extends Controller
             }
 
             return $contribs;
+        } else {
+            abort(401);
         }
     }
 }
