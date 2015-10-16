@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'url' => env('URL', 'journal.willng.me'),
+    'url' => env('APP_URL', 'journal.willng.me'),
 
     /*
     |--------------------------------------------------------------------------
