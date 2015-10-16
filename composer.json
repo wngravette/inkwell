@@ -9,6 +9,7 @@
         "laravel/framework": "5.1.*",
         "webpatser/laravel-uuid": "2.*",
         "laravelcollective/html": "5.1.*",
+        "guzzlehttp/guzzle": "~5.3|~6.0",
         "aws/aws-sdk-php": "~3.0"
     },
     "require-dev": {

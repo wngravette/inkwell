@@ -15,10 +15,10 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
+        'domain' => 'mail.willng.me',
         'secret' => env('MAILGUN_SECRET'),
     ],
-
+    
     'mandrill' => [
         'secret' => env('MANDRILL_SECRET'),
     ],
