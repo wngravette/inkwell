@@ -24,6 +24,12 @@
     border-color: #d2b2b2;
   }
 
+  &.flash-green {
+    color: #309911;
+    background-color: #c4f9c8;
+    border-color: #99ffa1;
+  }
+
   .flash-close {
     float: right;
     padding: 17px;     // bigger hit area

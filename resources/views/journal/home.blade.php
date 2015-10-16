@@ -93,6 +93,11 @@ $(document).ready(function() {
 
 });
 </script>
+@if ($msg)
+<div class="flash">
+    {{$msg}}
+</div>
+@endif
 <div class="columns intro">
     <div class="single-column column">
         <h2>It's {{$date}}, and
