@@ -20,6 +20,8 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('register', 'Auth\AuthController@postRegister');
 });
 
+Route::get('verify/{confirmation_code}', 'RegistrationController@confirm');
+
 // Frontend routes...
 Route::get('/', 'FrontendController@home');
 Route::get('about', 'FrontendController@about');

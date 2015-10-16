@@ -21,6 +21,7 @@ class JournalController extends Controller
         $date = Carbon::now()->format('l, jS F');
         $entryDate = Carbon::now()->format('Y-m-d');
         $currentEntry = $user->entries()->where('entry_date', $entryDate)->first();
+        $msg = false;
 
         if ($currentEntry) {
             $currentEntry->entry_body = Crypt::decrypt($currentEntry->entry_body);
@@ -36,11 +37,16 @@ class JournalController extends Controller
             $currentEntry->entry_body = Crypt::decrypt($currentEntry->entry_body);
         }
 
+        if ($user->active == 0) {
+            $msg = "Please check your emails and verify your account.";
+        }
+
         // $time_left = Carbon::now()->diffForHumans(Carbon::parse('tomorrow midnight'), true);
         $midnight = Carbon::parse('tomorrow midnight')->format('c');
 
         return view('journal.home', [
                 'date' => $date,
+                'msg' => $msg,
                 'todays_entry' => $currentEntry,
                 // 'time_left' => $time_left,
                 'midnight' => $midnight,
@@ -51,16 +57,16 @@ class JournalController extends Controller
     public function stats()
     {
         if (Auth::user()->entries()->count() <= 2) {
-            return view('journal.stats', [
-                    'stats_disabled' => true,
-                    'page_name' => 'Stats'
-                ]);
+            $stats_disabled = true;
         } else {
+            $stats_disabled = false;
+        }
         $words_this_month = [];
         $words_last_month = [];
         $avg_finish = [];
         $avg_time = [];
         $entry_bodies = [];
+        $msg = false;
         $common_words = ['the','to','that','of','is','and','a','it','in','at','be'];
 
         $entries_this_month =  Auth::user()->entries()->where('created_at', '>=', Carbon::now()->startOfMonth())->get();
@@ -110,9 +116,9 @@ class JournalController extends Controller
                 'avg_time' => $avg_time,
                 'avg_words' => $avg_words,
                 'common_words' => $word_occ_counts,
-                'stats_disabled' => false,
+                'stats_disabled' => $stats_disabled,
+                'msg' => $msg,
                 'page_name' => 'Stats'
             ]);
-        }
     }
 }

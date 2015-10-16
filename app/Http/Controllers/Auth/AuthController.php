@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Mail;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -59,11 +60,19 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        $confirmation_code = str_random(50);
+        $user_col = collect($data);
+
+        Mail::queue('email.verify', ['confirm_code' => $confirmation_code], function ($m) use ($data) {
+            $m->to($data['email'], 'name')->subject('Please verify your email.');
+        });
+
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'activation_code' => $confirmation_code
         ]);
     }
 }
