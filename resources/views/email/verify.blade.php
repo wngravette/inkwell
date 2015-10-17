@@ -939,7 +939,7 @@ a{color:#202020}.logo div a:hover{color:#202020 !important}.divider .bullet{back
                       <td class="padded" style="padding: 0;vertical-align: top;padding-left: 20px;padding-right: 20px;word-break: break-word;word-wrap: break-word">
 
             <div class="btn" style="Margin-bottom: 0;Margin-top: 0;text-align: center">
-              <![if !mso]><a style='border-radius: 3px;display: inline-block;font-size: 14px;font-weight: 700;line-height: 24px;padding: 13px 35px 12px 35px;text-align: center;text-decoration: none !important;transition: opacity 0.2s ease-in;color: #fefefe;font-family: "Open Sans",sans-serif;background-color: #e45d6b' href="{{url('verify')}}/{{$confirm_code}}">Confirm my Email</a><![endif]>
+              <![if !mso]><a style='border-radius: 3px;display: inline-block;font-size: 14px;font-weight: 700;line-height: 24px;padding: 13px 35px 12px 35px;text-align: center;text-decoration: none !important;transition: opacity 0.2s ease-in;color: #fefefe;font-family: "Open Sans",sans-serif;background-color: #e45d6b' href="{{asset('verify')}}/{{$confirm_code}}">Confirm my Email</a><![endif]>
             <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{url('verify')}}/{{$confirm_code}}" style="width:194px" arcsize="7%" fillcolor="#E45D6B" stroke="f"><v:textbox style="mso-fit-shape-to-text:t" inset="0px,12px,0px,11px"><center style="font-size:14px;line-height:24px;color:#FEFEFE;font-family:sans-serif;font-weight:700;mso-line-height-rule:exactly;mso-text-raise:4px">Confirm my Email</center></v:textbox></v:roundrect><![endif]--></div>
 
                       </td>
