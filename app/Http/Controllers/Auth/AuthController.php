@@ -63,7 +63,7 @@ class AuthController extends Controller
         $confirmation_code = str_random(50);
         $user_col = collect($data);
 
-        Mail::send('email.verify', ['confirm_code' => $confirmation_code, 'name' => $data['first_name']], function ($m) use ($data) {
+        Mail::send('email.verify', ['confirm_code' => $confirmation_code, 'name' => $data['first_name'], 'title' => 'Welcome'], function ($m) use ($data) {
             $m->to($data['email'], 'name')->subject('Please verify your email.');
         });
 
