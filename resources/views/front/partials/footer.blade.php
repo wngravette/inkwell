@@ -18,9 +18,6 @@
             <p>
                 Supporting {{config('app.app_name')}}
             </p>
-            <p>
-                {{url('verify')}}
-            </p>
         </div>
     </div>
     <div class="pure-u-1-24 pure-u-lg-8-24">
