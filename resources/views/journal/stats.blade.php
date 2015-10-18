@@ -114,7 +114,7 @@
         $(function () {
             $('#highchart').highcharts({
                 chart: {
-                    type: 'spline'
+                    type: 'spline',
                 },
                 xAxis: {
                     categories: [
@@ -143,6 +143,18 @@
                 legend: {
                     layout: 'vertical',
                     align: 'right',
+                },
+                plotOptions: {
+                    series: {
+                        connectNulls: false
+                    },
+                    column: {
+                        pointWidth: 10,
+                        borderWidth: 1
+                    },
+                    spline: {
+                        lineWidth: 2,
+                    },
                 },
                 series: [{
                     name: 'Words',
