@@ -139,7 +139,8 @@ class EntryController extends Controller
     public function findByDate($date)
     {
         $entry_date = Carbon::parse($date)->toDateString();
-        $entry = Entry::where('user_id', Auth::user()->id)->where('entry_date', $entry_date)->first();
+        $user = Auth::user();
+        $entry = $user->entries()->where('entry_date', $entry_date)->first();
         if (!$entry) {
             abort(404);
         }
