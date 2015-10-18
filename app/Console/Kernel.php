@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Entry;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,7 +26,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+        // Delete empty entries
+        $schedule->call(function () {
+            $yesterday = Carbon::yesterday()->format('Y-m-d');
+            $entries = Entry::where('entry_date', $yesterday)->where('word_count', 0)->get();
+            $entries->delete();
+        })->dailyAt('6:00');
     }
 }
