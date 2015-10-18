@@ -31,6 +31,6 @@ class Kernel extends ConsoleKernel
             $yesterday = Carbon::yesterday()->format('Y-m-d');
             $entries = Entry::where('entry_date', $yesterday)->where('word_count', 0)->get();
             $entries->delete();
-        })->dailyAt('6:00');
+        })->dailyAt('0:00');
     }
 }
