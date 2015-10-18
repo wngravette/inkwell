@@ -64,7 +64,7 @@ class AuthController extends Controller
         $user_col = collect($data);
 
         Mail::queue('email.verify', ['confirm_code' => $confirmation_code, 'name' => $data['first_name'], 'domain' => config('app.url'), 'title' => 'Welcome'], function ($m) use ($data) {
-            $m->to($data['email'], 'name')->subject('Please verify your email.');
+            $m->to($data['email'], $data['first_name'])->subject('Please verify your email.');
         });
 
         return User::create([
