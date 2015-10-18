@@ -120,9 +120,9 @@ class EntryController extends Controller
         $entry->entry_body = Crypt::encrypt($request->entry_body);
         $entry->word_count = intval($request->word_count);
         $entry->save();
-    } else {
-        return false;
-    }
+        } else {
+            return false;
+        }
     }
 
     /**

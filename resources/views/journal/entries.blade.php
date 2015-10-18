@@ -19,6 +19,16 @@ $('.entry_menu').hide();
 </script>
 <div class="columns">
     <div class="column one-half entries">
+        <form onsubmit="location.href='/journal/entries/handle/' + document.getElementById('userdate').value; return false;">
+            <div class="input-group">
+                <input id="userdate" type="text" name="userdate" placeholder="'Last Tuesday', '14th August', 'three days agos'">
+                <span class="input-group-button">
+                <button class="btn" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+                </span>
+            </div>
+        </form>
         @foreach($entries as $entry)
             <div class="entry_block column single-column" data-entry-id="{{$entry->id}}">
                 <p class="entry_date">
