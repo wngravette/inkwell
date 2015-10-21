@@ -187,6 +187,11 @@ textarea.pad {
     .stats_block {
         p {
             color: #8e8e8e;
+            &.stat {
+                color: black;
+                margin-bottom: 0.2em;
+                margin-top: 0;
+            }
             &.no-data {
                 color: #c2c2c2;
             }
