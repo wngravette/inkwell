@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateUsersTable extends Migration
+class UpdateJournalEntries extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class UpdateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table)
+        Schema::table('journal_entries', function(Blueprint $table)
         {
-            $table->string('activation_code')->after('password');
-            $table->integer('active')->default(0)->after('activation_code');
+            $table->integer('is_signed')->default(0)->after('word_count');
         });
     }
 
