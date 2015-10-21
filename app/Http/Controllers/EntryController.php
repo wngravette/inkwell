@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Entry;
+use App\Jobs\GenerateEntryStats;
+use App\Other\RID\RID;
 use Auth;
 use Carbon\Carbon;
 use Crypt;
@@ -26,8 +28,10 @@ class EntryController extends Controller
             $entry->entry_date_format = Carbon::parse($entry->entry_date)->format('l, jS F');
             $entry_date = Carbon::parse($entry->entry_date);
 
-            if ($entry_date == Carbon::today()) {
+            if ($entry_date == Carbon::today() && $entry->is_signed == 0) {
                 $entry->entry_status = "open";
+            } elseif ($entry_date == Carbon::today() && $entry->is_signed == 1) {
+                $entry->entry_status = "signed";
             } else {
                 $entry->entry_status = "closed";
             }
@@ -95,6 +99,39 @@ class EntryController extends Controller
                 ]);
     }
 
+    public function showStats($id)
+    {
+        $entry = Entry::find($id);
+        $user = Auth::user();
+
+        if ($user->id !== $entry->user_id) {
+            abort(403);
+        }
+
+        $stats = new RID();
+        $entry_body = Crypt::decrypt($entry->entry_body);
+        $stats->analyze($entry_body);
+        $data_primary = $stats->retrieve_data(array('PRIMARY'));
+        $data_secondary = $stats->retrieve_data(array('SECONDARY'));
+        $data_emotion = $stats->retrieve_data(array('EMOTIONS'));
+
+        $date = Carbon::parse($entry->entry_date)->format('l, jS F');
+
+        // foreach ($data as $item) {
+        //     foreach ($item as $stat) {
+        //
+        //     }
+        // }
+
+        return view('journal.dayview-stats', [
+            'page_name' => 'Stats',
+            'primary' => $data_primary,
+            'secondary' => $data_secondary,
+            'emotion' => $data_emotion,
+            'date' => $date
+            ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -120,8 +157,22 @@ class EntryController extends Controller
         $entry->entry_body = Crypt::encrypt($request->entry_body);
         $entry->word_count = intval($request->word_count);
         $entry->save();
+        $this->dispatch(new GenerateEntryStats($entry));
         } else {
             return false;
+        }
+    }
+
+    public function sign($id)
+    {
+        if (Auth::check()) {
+            $entry = Entry::find($id);
+            $entry->is_signed = 1;
+            $entry->save();
+            $this->dispatch(new GenerateEntryStats($entry));
+            return redirect('/journal')->with('msg', 'signed');
+        } else {
+            abort(403);
         }
     }
 
@@ -145,5 +196,16 @@ class EntryController extends Controller
             abort(404);
         }
         return redirect('journal/entries/'.$entry->id);
+    }
+
+    public function stats()
+    {
+        $stats = new RID();
+        $entry = Entry::find(17);
+        $entry_body = Crypt::decrypt($entry->entry_body);
+        $stats->analyze($entry_body);
+        $data = $stats->retrieve_data(array('EMOTIONS'));
+
+        return $data;
     }
 }
