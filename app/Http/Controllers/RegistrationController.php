@@ -16,15 +16,15 @@ class RegistrationController extends Controller
            return "no code";
         }
 
-        $user = User::where('activation_code', '=', $confirmation_code)->first();
+        $user = User::where('confirmation_code', '=', $confirmation_code)->first();
 
         if (!$user)
         {
            return "no user";
         }
 
-        $user->active = 1;
-        $user->activation_code = null;
+        $user->confirmed = 1;
+        $user->confirmation_code = null;
         $user->save();
 
         return redirect('/journal');

@@ -37,7 +37,7 @@ class JournalController extends Controller
             $currentEntry->entry_body = Crypt::decrypt($currentEntry->entry_body);
         }
 
-        if ($user->active == 0) {
+        if ($user->confirmed == 0) {
             $msg = "Please check your emails and verify your account.";
         }
 
