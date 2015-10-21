@@ -9,19 +9,46 @@
 </div>
 <script>
 $(document).ready(function() {
-$('.entry_menu').hide();
+    $('.entry_menu').hide();
     $('i.entry_menu_btn').on("click", function() {
         var entry_id = $(this).attr('data-entry-id');
         // $('.entry_menu').slideUp(250);
         $('div#'+entry_id).slideToggle(250);
     });
+    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+    });
+    $('a.sign-entry-btn').on("click", function() {
+        var entry_id = $(this).attr('data-entry-id');
+        var button = $(this);
+        $.ajax({
+            method: "POST",
+            url: "/journal/entries/"+entry_id+"/sign",
+            statusCode: {
+                503: function() {
+                    alert('nah');
+                }
+            },
+            beforeSend: function() {
+                $(button).addClass('disabled');
+            },
+            success: function() {
+                $(button).removeClass('disabled').html("Signed").fadeOut(400, function() {
+                    $(this).next().html('Read');
+                });
+            }
+        });
+    });
+
 });
 </script>
 <div class="columns">
     <div class="column one-half entries">
         <form onsubmit="location.href='/journal/entries/handle/' + document.getElementById('userdate').value; return false;">
             <div class="input-group">
-                <input id="userdate" type="text" name="userdate" placeholder="'Last Tuesday', '14th August', 'three days agos'">
+                <input id="userdate" type="text" name="userdate" placeholder="'Last Tuesday', '14th August', 'three days ago'">
                 <span class="input-group-button">
                 <button class="btn" type="submit">
                     <i class="fa fa-search"></i>
@@ -34,18 +61,22 @@ $('.entry_menu').hide();
                 <p class="entry_date">
                     {{$entry->entry_date_format}} <i class="fa fa-chevron-down menu_caret entry_menu_btn" data-entry-id="{{$entry->id}}"></i>
                     @if ($entry->entry_status == "open")
-                    <span class="state state-open">Still time to write!</span>
+                    <span class="state state-open">Writing is open!</span>
+                    @elseif ($entry->entry_status == "signed")
+                    <span class="state state-renamed tooltipped tooltipped-e" aria-label="You have signed your entry, meaning you cannot add to today's writing.">Entry is signed</span>
                     @endif
                 </p>
-                <div id="{{$entry->id}}" class="entry_menu menu one-third column">
+                <div id="{{$entry->id}}" class="entry_menu menu one-half column">
                     <p>
                         <span>
                         @if ($entry->entry_status == "open")
+                        <a class="btn btn-primary tooltipped tooltipped-s sign-entry-btn" role="button" aria-label="Signing your entry will prevent you from writing anymore, and generate your stats." data-entry-id="{{$entry->id}}">Sign</a>
                         <a class="btn" href="/journal" role="button">Write</a>
                         @else
-                        <a class="btn" href="/journal/entries/{{$entry->id}}" role="button">View</a>
+                        <a class="btn" href="/journal/entries/{{$entry->id}}" role="button">Read</a>
                         @endif
                         </span>
+                        <span><a class="btn" href="/journal/entries/{{$entry->id}}/stats" role="button">Stats</a></span>
                     </p>
                 </div>
                 <p class="entry_details">{{number_format($entry->word_count)}} words &middot; Took {{$entry->time_taken}} to write.</p>

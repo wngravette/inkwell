@@ -107,19 +107,33 @@ $(document).ready(function() {
             you've written <span class="init_words">no</span> words for today.
             @endif
         </h2>
+        @if ($todays_entry->is_signed == 0)
         <h2>You've got <span class="timeago" title="{{$midnight}}"></span> until writing closes for today.</h2>
+        @else
+        <h2>You have signed today's entry, and writing is closed.</h2>
+        @endif
     </div>
 </div>
 <div class="columns pad">
     <div class="single-column column">
+        @if ($todays_entry->is_signed == 0)
         <textarea id="pad" name="entry_body" class="pad input-block" cols="90" autofocus placeholder="Begin your journal for today...">@if($todays_entry){{$todays_entry->entry_body}}@endif</textarea>
+        @else
+        <p class="pad">
+            {{$todays_entry->entry_body}}
+        </p>
+        @endif
     </div>
 </div>
 <div class="columns info">
     <div class="single-column column entry_info">
         <p class="stats">
             <span class="info_block">
+                @if ($todays_entry->is_signed == 1)
+                <span class="words">{{$todays_entry->word_count}}</span>
+                @else
                 <span class="words">0</span>
+                @endif
                 <span class="slash">/</span>
                 <span class="tooltipped tooltipped-n" aria-label="Your recommended word count goal.">500</span> words</span>
                 <span class="info_block">

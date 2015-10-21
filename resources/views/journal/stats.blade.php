@@ -45,57 +45,6 @@
     </div>
 </div>
 <div class="columns stats">
-    <!--
-    <div class="column one-third stats_block">
-        <script>
-        $(function () {
-            $('#highchart').highcharts({
-                chart: {
-                    type: 'spline'
-                },
-                xAxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                },
-                yAxis: {
-                    title: {
-                        text: 'Temperature (°C)'
-                    },
-                    labels: {
-                        enabled: true,
-                        align: 'right',
-                        format: '{value} words',
-                    },
-                    minPadding: 5,
-                    floor: 0,
-                    opposite:true
-                },
-                tooltip: {
-                    valueSuffix: ''
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'middle',
-                    borderWidth: 0
-                },
-                series: [{
-                    name: 'Words',
-                    data: [
-                        @foreach ($word_counts as $word_count)
-                        {{$word_count}},
-                        @endforeach
-                    ]
-                }]
-            });
-        });
-        </script>
-        <p>
-            Words per Entry
-        </p>
-        <div id="highchart" style="height:150px"></div>
-    </div>
-    -->
     <div class="column one-fifth stats_block common_words">
         <p>
             Most Common Words
@@ -112,7 +61,7 @@
         </p>
         <script>
         $(function () {
-            $('#highchart').highcharts({
+            $('#words-per-day').highcharts({
                 chart: {
                     type: 'spline',
                 },
@@ -167,7 +116,71 @@
             });
         });
         </script>
-        <div id="highchart" style="height:200px"></div>
+        <div id="words-per-day" style="height:200px"></div>
+    </div>
+    <div class="column one-third stats_block common_words">
+        <p>
+            Emotion in Writing
+        </p>
+        <script>
+        $(function () {
+            $('#emotion').highcharts({
+
+                chart: {
+                    polar: true,
+                    type: 'line',
+
+                },
+
+                title: {
+                    text: 'Budget vs spending',
+                    x: -80
+                },
+
+                pane: {
+                    size: '80%'
+                },
+
+                xAxis: {
+                    categories: ['Affection', 'Expressiveness', 'Frustration'],
+                    tickmarkPlacement: 'on',
+                    lineWidth: 0,
+                    labels: {
+            			enabled: true,
+            			style: {
+            				color: '#999',
+            				fontWeight: 'normal'
+            			}
+            		},
+                },
+
+                yAxis: {
+                    gridLineInterpolation: 'polygon',
+                    lineWidth: 0,
+                    min: 0
+                },
+
+                tooltip: {
+                    enabled: false
+                },
+
+                legend: {
+                    align: 'right',
+                    verticalAlign: 'top',
+                    y: 70,
+                    layout: 'vertical'
+                },
+
+                series: [{
+                    name: 'Allocated Budget',
+                    data: [4, 2, 3],
+                    pointPlacement: 'on'
+                }]
+
+            });
+        });
+        </script>
+        <div id="emotion" style="height:200px"></div>
     </div>
 </div>
 @endif
