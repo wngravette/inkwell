@@ -7,7 +7,6 @@ Highcharts.theme = {
 	colors: ["#0334de", "#45e271", "#8718b4", "#DF5353", "#aaeeee", "#ff0066", "#eeaaee",
 		"#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
 	chart: {
-		type: "spline",
 		backgroundColor: "#fff",
 		borderWidth: 0,
 		borderRadius: 0,

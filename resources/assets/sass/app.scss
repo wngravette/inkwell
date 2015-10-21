@@ -146,7 +146,7 @@ textarea.pad {
     float: none;
 
     .entry_menu {
-        margin-top: 0.4em;
+        margin-top: 0.8em;
         float: none;
     }
 
@@ -187,6 +187,9 @@ textarea.pad {
     .stats_block {
         p {
             color: #8e8e8e;
+            &.no-data {
+                color: #c2c2c2;
+            }
         }
         &.common_words {
             p {
