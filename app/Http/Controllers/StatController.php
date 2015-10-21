@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Entry;
 use App\Stat;
 use App\Other\RID\RID;
+use Carbon\Carbon;
 use Crypt;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -51,7 +53,41 @@ class StatController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = Auth::user();
+        $entry = Entry::find($id);
+        $stats = Stat::where('entry_id', $id)->first();
+        $date = Carbon::parse($entry->entry_date)->format('l, jS F');
+
+        if ($user->id !== $entry->user_id) {
+            abort(403);
+        }
+
+        if (!$stats) {
+            $no_stats = true;
+            $data_primary = null;
+            $data_secondary = null;
+            $data_emotion = null;
+        } else {
+            $no_stats = false;
+
+            $stats_payload = unserialize($stats->stats_payload);
+            $data_primary = $stats_payload['Primary'];
+            $data_secondary = $stats_payload['Secondary'];
+            if (isset($stats_payload['Emotion'])) {
+                $data_emotion = $stats_payload['Emotions'];
+            } else {
+                $data_emotion = null;
+            }
+        }
+        return view('journal.dayview-stats', [
+            'page_name' => 'Stats',
+            'primary' => $data_primary,
+            'secondary' => $data_secondary,
+            'emotion' => $data_emotion,
+            'no_stats' => $no_stats,
+            'entry' => $entry,
+            'date' => $date
+            ]);
     }
 
     /**
@@ -88,46 +124,4 @@ class StatController extends Controller
         //
     }
 
-    public function handle()
-    {
-        $id = 17;
-        $entry = Entry::find($id);
-        $stats = new RID();
-        $entry_body = Crypt::decrypt($entry->entry_body);
-        $stats->analyze($entry_body);
-        $primary = $stats->retrieve_data(array('PRIMARY'));
-        $secondary = $stats->retrieve_data(array('SECONDARY'));
-        $emotions = $stats->retrieve_data(array('EMOTIONS'));
-
-        foreach ($primary as $section) {
-            foreach ($section as $bit) {
-                $p[$bit[0]] = $bit[1];
-            }
-            $prim['Primary'] = $p;
-        }
-
-        foreach ($secondary as $section) {
-            foreach ($section as $bit) {
-                $s[$bit[0]] = $bit[1];
-            }
-            $sec['Secondary'] = $s;
-        }
-
-        foreach ($emotions as $section) {
-            foreach ($section as $bit) {
-                $e[$bit[0]] = $bit[1];
-            }
-            $emo['Emotions'] = $e;
-        }
-
-        $result = array_merge($prim, $sec);
-        $result = array_merge($result, $emo);
-        $result = serialize($result);
-
-        $stat = new Stat;
-        $stat->entry_id = $id;
-        $stat->stats_payload = $result;
-        $stat->save();
-
-    }
 }

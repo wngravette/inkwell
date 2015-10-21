@@ -17,6 +17,6 @@ class Entry extends Model
 
     public function stats()
     {
-        return $this->hasMany('App\Stat');
+        return $this->hasOne('App\Stat');
     }
 }

@@ -1,5 +1,42 @@
 @extends('journal.master')
 @section('content')
+@if ($no_stats == true)
+    <div class="flash">
+        <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+            });
+            $('a.sign-entry-btn').on("click", function() {
+                var entry_id = $(this).attr('data-entry-id');
+                var button = $(this);
+                $.ajax({
+                    method: "POST",
+                    url: "/journal/entries/"+entry_id+"/sign",
+                    statusCode: {
+                        503: function() {
+                            alert('nah');
+                        }
+                    },
+                    beforeSend: function() {
+                        $(button).addClass('disabled');
+                    },
+                    success: function() {
+                        $(button).removeClass('disabled').html("Signed").fadeOut(400, function() {
+                            $(this).next().html('Your entry has been signed. Check back here soon for your stats.');
+                        });
+                    }
+                });
+            });
+
+        });
+        </script>
+        <a class="btn btn-outline sign-entry-btn" data-entry-id="{{$entry->id}}" role="button">Sign my Entry</a>
+        <span style="margin-left: 0.8em">Your stats will be here when writing closes. Sign your entry to close writing and generate your stats.</span>
+    </div>
+@else
 <div class="columns intro">
     <div class="single-column column">
         <h2>Stats for {{$date}}</h2>
@@ -11,10 +48,10 @@
             Primary Cognition
         </p>
         @if ($primary)
-            @foreach ($primary as $item)
-                @foreach ($item as $stat)
-                    {{$stat[0]}}<span class="right">{{$stat[1]}}</span>
-                @endforeach
+            @foreach ($primary as $stat_name => $stat_number)
+                <p class="stat">
+                    {{$stat_name}}<span class="right">{{$stat_number}}</span>
+                </p>
             @endforeach
         @else
             <p class="no-data">
@@ -27,10 +64,10 @@
             Secondary Cognition
         </p>
         @if ($secondary)
-            @foreach ($secondary as $item)
-                @foreach ($item as $stat)
-                    {{$stat[0]}}{{$stat[1]}}<br>
-                @endforeach
+            @foreach ($secondary as $stat_name => $stat_number)
+                <p class="stat">
+                    {{$stat_name}}<span class="right">{{$stat_number}}</span>
+                </p>
             @endforeach
         @else
         <p class="no-data">
@@ -43,10 +80,10 @@
             Emotion
         </p>
         @if ($emotion)
-            @foreach ($emotion as $item)
-                @foreach ($item as $stat)
-                    {{$stat[0]}}{{$stat[1]}}<br>
-                @endforeach
+            @foreach ($emotion as $stat_name => $stat_number)
+                <p class="stat">
+                    {{$stat_name}}<span class="right">{{$stat_number}}</span>
+                </p>
             @endforeach
         @else
             <p class="no-data">
@@ -65,4 +102,5 @@
         </p>
     </div>
 </div>
+@endif
 @endsection

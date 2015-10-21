@@ -101,35 +101,7 @@ class EntryController extends Controller
 
     public function showStats($id)
     {
-        $entry = Entry::find($id);
-        $user = Auth::user();
-
-        if ($user->id !== $entry->user_id) {
-            abort(403);
-        }
-
-        $stats = new RID();
-        $entry_body = Crypt::decrypt($entry->entry_body);
-        $stats->analyze($entry_body);
-        $data_primary = $stats->retrieve_data(array('PRIMARY'));
-        $data_secondary = $stats->retrieve_data(array('SECONDARY'));
-        $data_emotion = $stats->retrieve_data(array('EMOTIONS'));
-
-        $date = Carbon::parse($entry->entry_date)->format('l, jS F');
-
-        // foreach ($data as $item) {
-        //     foreach ($item as $stat) {
-        //
-        //     }
-        // }
-
-        return view('journal.dayview-stats', [
-            'page_name' => 'Stats',
-            'primary' => $data_primary,
-            'secondary' => $data_secondary,
-            'emotion' => $data_emotion,
-            'date' => $date
-            ]);
+        
     }
 
     /**

@@ -44,9 +44,9 @@ $(document).ready(function() {
 
     // WORKS SOMETIMES, BUT WILL SOMETIMES CAUSE TROUBLE. BUG?
 
-    // var open_words = wordCount( $('textarea#pad').val() );
-    // $words.html(open_words.words);
-    // $words_init_span.html(open_words.words);
+    var open_words = wordCount( $('textarea#pad').val() );
+    $words.html(open_words.words);
+    $words_init_span.html(open_words.words);
 
     $.ajaxSetup({
             headers: {
