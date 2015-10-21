@@ -29,6 +29,8 @@ Route::get('privacy', 'FrontendController@privacy');
 Route::get('security', 'FrontendController@security');
 Route::get('support-journal', 'FrontendController@support');
 
+Route::get('rid', 'StatController@handle');
+
 // App routes...
 Route::group(['middleware' => 'auth', 'prefix' => 'journal'], function() {
     Route::get('/', 'JournalController@home');
@@ -37,6 +39,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'journal'], function() {
     Route::post('entries', 'EntryController@store');
     Route::get('entries/{id}', 'EntryController@show');
     Route::post('entries/{id}', 'EntryController@update');
+    Route::post('entries/{id}/sign', 'EntryController@sign');
+    Route::get('entries/{id}/stats', 'EntryController@showStats');
     Route::get('entries/handle/{date}', 'EntryController@findByDate');
 });
 
