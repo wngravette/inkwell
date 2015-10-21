@@ -77,7 +77,7 @@ class GenerateEntryStats extends Job implements SelfHandling, ShouldQueue
         }
 
         // Bad code, outside of other if arrangement only because calculating emotions usually takes more words.
-        
+
         if ($emotions) {
             $result = array_merge($result, $emo);
         }
