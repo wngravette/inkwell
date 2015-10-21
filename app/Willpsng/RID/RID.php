@@ -1,6 +1,6 @@
 <?
 
-namespace App\Other\RID;
+namespace App\Willpsng\RID;
 
 use DOMDocument;
 use DOMXPath;
@@ -10,7 +10,7 @@ class RID {
     public $tree;
 
     function __construct() {
-        $this->load_dictionary(file_get_contents(app_path('Other/RID/RID.CAT')));
+        $this->load_dictionary(file_get_contents(app_path('Willpsng/RID/RID.CAT')));
     }
 
     public function alphabetize(&$tree, &$node, $letter) {

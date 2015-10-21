@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entry;
 use App\Jobs\GenerateEntryStats;
-use App\Other\RID\RID;
+use App\Willpsng\RID\RID;
 use Auth;
 use Carbon\Carbon;
 use Crypt;
@@ -101,7 +101,7 @@ class EntryController extends Controller
 
     public function showStats($id)
     {
-        
+
     }
 
     /**
