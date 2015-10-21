@@ -14,4 +14,9 @@ class Entry extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function stats()
+    {
+        return $this->hasMany('App\Stat');
+    }
 }
