@@ -1,6 +1,4 @@
-<?
-
-namespace App\Willpsng;
+<?php namespace App\Willpsng;
 
 use DOMDocument;
 use DOMXPath;
