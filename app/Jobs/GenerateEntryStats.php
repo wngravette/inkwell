@@ -5,7 +5,7 @@ namespace App\Jobs;
 use App\Entry;
 use App\Stat;
 use App\Jobs\Job;
-use App\Willpsng\RID;
+use App\Willpsng\RID; 
 use Crypt;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
