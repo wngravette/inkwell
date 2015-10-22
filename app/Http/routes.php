@@ -29,6 +29,8 @@ Route::get('privacy', 'FrontendController@privacy');
 Route::get('security', 'FrontendController@security');
 Route::get('support-journal', 'FrontendController@support');
 
+Route::get('rid', 'EntryController@stats');
+
 // App routes...
 Route::group(['middleware' => 'auth', 'prefix' => 'journal'], function() {
     Route::get('/', 'JournalController@home');
