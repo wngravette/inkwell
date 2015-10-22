@@ -179,9 +179,6 @@ class RID {
                 }
             echo "],";
         }
-
         echo "]);";
     }
-
-
 }
