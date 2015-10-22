@@ -1,6 +1,6 @@
 <?
 
-namespace App\Willpsng\RID;
+namespace App\Willpsng;
 
 use DOMDocument;
 use DOMXPath;

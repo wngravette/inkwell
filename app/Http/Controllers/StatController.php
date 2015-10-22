@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Entry;
 use App\Stat;
-use App\Willpsng\RID\RID;
+use App\Willpsng\RID;
 use Carbon\Carbon;
 use Crypt;
 use Illuminate\Http\Request;
