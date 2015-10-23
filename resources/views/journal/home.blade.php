@@ -120,7 +120,7 @@ $(document).ready(function() {
         <textarea id="pad" name="entry_body" class="pad input-block" cols="90" autofocus placeholder="Begin your journal for today...">@if($todays_entry){{$todays_entry->entry_body}}@endif</textarea>
         @else
         <p class="pad">
-            {{$todays_entry->entry_body}}
+            {!! $todays_entry->entry_body !!}
         </p>
         @endif
     </div>
