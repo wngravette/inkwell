@@ -30,14 +30,14 @@ class Kernel extends ConsoleKernel
         // Delete empty entries
         $schedule->call(function () {
             $yesterday = Carbon::yesterday()->format('Y-m-d');
-            $entries = Entry::where('entry_date', $yesterday)->where('word_count', 0)->get();
+            $entries = Entry::where('entry_date',"<=", $yesterday)->where('word_count', 0)->get();
             $entries->delete();
-        })->daily();
+        })->everyMinute();
 
         // Create stats for entries
         $schedule->call(function () {
             $yesterday = Carbon::yesterday()->format('Y-m-d');
-            $entries = Entry::where('entry_date', $yesterday)->get();
+            $entries = Entry::where('entry_date', "<=", $yesterday)->get();
             foreach ($entries as $entry) {
                 $this->dispatch(new GenerateEntryStats($entry));
             }
