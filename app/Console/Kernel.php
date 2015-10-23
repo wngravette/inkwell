@@ -31,7 +31,9 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $yesterday = Carbon::yesterday()->format('Y-m-d');
             $entries = Entry::where('entry_date',"<=", $yesterday)->where('word_count', 0)->get();
-            $entries->delete();
+            foreach ($entries as $entry) {
+                $entry->delete();
+            }
         })->everyMinute();
 
         // Create stats for entries
