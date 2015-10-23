@@ -1,6 +1,10 @@
 @extends('journal.master')
 @section('content')
-@if ($no_stats == true)
+@if ($no_stats == true && $entry->is_signed == 1)
+<div class="flash">
+    Your stats are being generated. Check back soon.
+</div>
+@elseif ($no_stats == true)
     <div class="flash">
         <script>
         $(document).ready(function() {
@@ -24,17 +28,16 @@
                         $(button).addClass('disabled');
                     },
                     success: function() {
-                        $(button).removeClass('disabled').html("Signed").fadeOut(400, function() {
-                            $(this).next().html('Your entry has been signed. Check back here soon for your stats.');
-                        });
-                    }
+                        $(button).html("Signed");
+                        $('span#sign-msg').html('Your entry has been signed. Check back here soon for your stats.');
+                    },
                 });
             });
 
         });
         </script>
         <a class="btn btn-outline sign-entry-btn" data-entry-id="{{$entry->id}}" role="button">Sign my Entry</a>
-        <span style="margin-left: 0.8em">Your stats will be here when writing closes. Sign your entry to close writing and generate your stats.</span>
+        <span id="sign-msg" style="margin-left: 0.8em">Your stats will be here when writing closes. Sign your entry to close writing and generate your stats.</span>
     </div>
 @else
 <div class="columns intro">
