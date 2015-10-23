@@ -102,6 +102,7 @@ $(document).ready(function() {
                 subDomainTextFormat: "%d",
                 start: start_date,
             	range: 2,
+                maxDate: start_date,
             	displayLegend: false,
                 label: {
             		position: "top",
@@ -116,7 +117,14 @@ $(document).ready(function() {
         	        window.location.replace('/journal/entries/handle/'+date);
             	},
                 previousSelector: "#previousSelector-a-previous",
-                nextSelector: "#nextSelector-a-next"
+                nextSelector: "#nextSelector-a-next",
+                onMaxDomainReached: function(hit) {
+                    if (hit) {
+                        $("#nextSelector-a-next").addClass('disabled');
+                    } else {
+                        $("#nextSelector-a-next").removeClass('disabled');
+                    }
+                },
             });
         </script>
     </div>
