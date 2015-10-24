@@ -69,7 +69,6 @@ class StatController extends Controller
             $data_emotion = null;
         } else {
             $no_stats = false;
-
             $stats_payload = unserialize($stats->stats_payload);
             $data_primary = $stats_payload['Primary'];
             $data_secondary = $stats_payload['Secondary'];

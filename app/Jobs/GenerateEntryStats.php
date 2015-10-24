@@ -82,6 +82,10 @@ class GenerateEntryStats extends Job implements SelfHandling, ShouldQueue
             $result = array_merge($result, $emo);
         }
 
+        $result = json_encode($result);
+        $result = preg_replace('/\B([A-Z])/', ' $1', $result);
+        $result = json_decode($result, true);
+
         $result = serialize($result);
 
         $stat = new Stat;
