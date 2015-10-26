@@ -48,7 +48,6 @@ class JournalController extends Controller
                 'date' => $date,
                 'msg' => $msg,
                 'todays_entry' => $currentEntry,
-                // 'time_left' => $time_left,
                 'midnight' => $midnight,
                 'page_name' => 'Home'
             ]);

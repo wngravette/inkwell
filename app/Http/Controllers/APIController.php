@@ -12,6 +12,10 @@ use App\Http\Controllers\Controller;
 
 class APIController extends Controller
 {
+
+    /**
+     * Retureive list of days which user made an entry.
+     */
     public function contribs()
     {
         if (Auth::check()) {

@@ -30,7 +30,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // Delete empty entries
+        /**
+         * Clear out empty entries for previous days.
+         */
         $schedule->call(function () {
             $yesterday = Carbon::yesterday()->format('Y-m-d');
             $entries = Entry::where('entry_date',"<=", $yesterday)->where('word_count', 0)->get();
@@ -39,7 +41,9 @@ class Kernel extends ConsoleKernel
             }
         })->everyMinute();
 
-        // Create stats for entries
+        /**
+         * Generate stats for previous days.
+         */
         $schedule->call(function () {
             $yesterday = Carbon::yesterday()->format('Y-m-d');
             $entries = Entry::where('entry_date', "<=", $yesterday)->get();
