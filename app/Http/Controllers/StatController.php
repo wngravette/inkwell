@@ -55,7 +55,7 @@ class StatController extends Controller
     {
         $user = Auth::user();
         $entry = Entry::find($id);
-        $stats = Stat::where('entry_id', $id)->first();
+        $stats = $entry->stats;
         $date = Carbon::parse($entry->entry_date)->format('l, jS F');
 
         if ($user->id !== $entry->user_id) {
