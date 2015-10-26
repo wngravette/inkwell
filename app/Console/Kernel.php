@@ -46,7 +46,7 @@ class Kernel extends ConsoleKernel
          */
         $schedule->call(function () {
             $yesterday = Carbon::yesterday()->format('Y-m-d');
-            $entries = Entry::where('entry_date', "<=", $yesterday)->get();
+            $entries = Entry::where('entry_date', "<=", $yesterday)->where('is_signed', 0)->get();
             foreach ($entries as $entry) {
                 $entry->is_signed = 1;
                 $entry->save();
