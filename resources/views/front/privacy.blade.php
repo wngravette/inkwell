@@ -27,7 +27,7 @@ $(document).ready(function() {
                 {{config('app.app_name')}} never stores your writing unencrypted. If it's saved to our databases, it's encrypted. Encryption of the writing happens server-side, and SSL protects your writing on it's way to us.
             </p>
             <p class="body">
-                {{config('app.app_name')}} also encrypts all session and cookie data, and it does a good job to protect what you can send to the servers which means someone trying to stop is going to have a hard time trying to pretend to be you. And of course, your password is encrypted just as thoroughly as your writing.
+                {{config('app.app_name')}} also encrypts all session and cookie data, and locks all of your information down tight to stop prying fingers making their way to your writing. Your password and wiritng statistics are borth either encrypted just like your writing, or dervied from your writing directly, meaning either way, nobodies getting at that either!
             </p>
         </div>
     </div>
