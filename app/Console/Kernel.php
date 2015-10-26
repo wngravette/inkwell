@@ -50,7 +50,9 @@ class Kernel extends ConsoleKernel
             foreach ($entries as $entry) {
                 $entry->is_signed = 1;
                 $entry->save();
-                $this->dispatch(new GenerateEntryStats($entry));
+                if ($entry->word_count > 100) {
+                    $this->dispatch(new GenerateEntryStats($entry));
+                } 
             }
         })->hourly();
     }

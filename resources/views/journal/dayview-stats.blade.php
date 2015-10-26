@@ -1,6 +1,10 @@
 @extends('journal.master')
 @section('content')
-@if ($no_stats == true && $entry->is_signed == 1)
+@if ($entry->word_count < 100)
+<div class="flash">
+    You need to write at least 100 words to use Stats.
+</div>
+@elseif ($no_stats == true && $entry->is_signed == 1 && $entry->word_count > 100)
 <div class="flash">
     Your stats are being generated. Check back soon.
 </div>
