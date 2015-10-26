@@ -57,30 +57,16 @@ class GenerateEntryStats extends Job implements SelfHandling, ShouldQueue
             $sec['Secondary'] = $s;
         }
 
-        if ($emotions) {
-            foreach ($emotions as $section) {
-                foreach ($section as $bit) {
-                    $e[$bit[0]] = $bit[1];
-                }
-                $emo['Emotions'] = $e;
+        foreach ($emotions as $section) {
+            foreach ($section as $bit) {
+                $e[$bit[0]] = $bit[1];
             }
+            $emo['Emotions'] = $e;
         }
 
-        if ($primary) {
-            if ($secondary) {
-                $result = array_merge($prim, $sec);
-            } else {
-                $result = $prim;
-            }
-        } else {
-            $result = "null";
-        }
 
-        // Bad code, outside of other if arrangement only because calculating emotions usually takes more words.
-
-        if ($emotions) {
-            $result = array_merge($result, $emo);
-        }
+        $result = array_merge($prim, $sec);
+        $result = array_merge($result, $emo);
 
         $result = json_encode($result);
         $result = preg_replace('/\B([A-Z])/', ' $1', $result);

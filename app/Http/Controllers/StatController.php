@@ -72,7 +72,7 @@ class StatController extends Controller
             $stats_payload = unserialize($stats->stats_payload);
             $data_primary = $stats_payload['Primary'];
             $data_secondary = $stats_payload['Secondary'];
-            if (isset($stats_payload['Emotion'])) {
+            if (count($stats_payload['Emotions'] > 0)) {
                 $data_emotion = $stats_payload['Emotions'];
             } else {
                 $data_emotion = null;
