@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "14893444653a288c374772fc5e8e4713",
-    "content-hash": "acf3dd93cbcad272453336fa457cb5aa",
+    "hash": "0c6600eba2872ececa9af9e187568850",
+    "content-hash": "6211b0f137b273e2d476181223a9ac7a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.8.2",
+            "version": "3.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "b4fba5210039feaf32850776dc382c9946ed4b97"
+                "reference": "adee5c36163f953331f290e7ca5393cf037d81bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b4fba5210039feaf32850776dc382c9946ed4b97",
-                "reference": "b4fba5210039feaf32850776dc382c9946ed4b97",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/adee5c36163f953331f290e7ca5393cf037d81bd",
+                "reference": "adee5c36163f953331f290e7ca5393cf037d81bd",
                 "shasum": ""
             },
             "require": {
@@ -82,7 +82,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-10-22 22:56:23"
+            "time": "2015-10-26 19:38:48"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -2185,6 +2185,37 @@
                 "UUID RFC4122"
             ],
             "time": "2015-06-15 21:48:27"
+        },
+        {
+            "name": "yubico/u2flib-server",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Yubico/php-u2flib-server.git",
+                "reference": "71ad5f0b7c796966da356eecd5b583ac852e92a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Yubico/php-u2flib-server/zipball/71ad5f0b7c796966da356eecd5b583ac852e92a1",
+                "reference": "71ad5f0b7c796966da356eecd5b583ac852e92a1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "description": "Library for U2F implementation",
+            "homepage": "https://developers.yubico.com/php-u2flib-server",
+            "time": "2015-03-03 08:05:16"
         }
     ],
     "packages-dev": [

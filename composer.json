@@ -10,7 +10,8 @@
         "webpatser/laravel-uuid": "2.*",
         "laravelcollective/html": "5.1.*",
         "guzzlehttp/guzzle": "~5.3|~6.0",
-        "aws/aws-sdk-php": "~3.0"
+        "aws/aws-sdk-php": "~3.0",
+        "yubico/u2flib-server": "0.1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
