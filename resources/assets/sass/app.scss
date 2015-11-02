@@ -220,3 +220,15 @@ textarea.pad {
         }
     }
 }
+
+.prefs-body {
+    //margin-left: 2.5em;
+
+    form {
+        dl {
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+    }
+}

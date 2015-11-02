@@ -9,6 +9,28 @@ use App\Http\Controllers\Controller;
 class SettingController extends Controller
 {
     /**
+     * Render User preferences acount details page
+     * @return \Illuminate\Http\Response
+     */
+     public function render()
+     {
+         return view('journal.settings.partials.details', [
+             'page_name' => 'Preferences',
+             ]);
+     }
+
+     /**
+      * Render User preferences privacy page
+      * @return \Illuminate\Http\Response
+      */
+      public function renderPrivacy()
+      {
+          return view('journal.settings.partials.privacy', [
+              'page_name' => 'Preferences',
+              ]);
+      }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

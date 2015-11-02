@@ -2,7 +2,7 @@
 //
 // A menu on the side of a page, defaults to left side. e.g. github.com/about
 
-.menu {
+.app-menu {
   margin-bottom: 15px;
   list-style: none;
   background-color: #fff;
@@ -16,6 +16,7 @@
   padding: 8px 10px;
   text-shadow: 0 1px 0 #fff;
   border-bottom: 1px solid #eee;
+  color: black;
 
   &:first-child {
     border-top: 0;
@@ -51,7 +52,7 @@
       bottom: 0;
       width: 2px;
       content: "";
-      background-color: #d26911;
+      background-color: #11a4d2;
     }
   }
 
