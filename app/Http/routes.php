@@ -42,6 +42,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'journal'], function() {
     Route::post('entries/{id}/sign', 'EntryController@sign');
     Route::get('entries/{id}/stats', 'StatController@show');
     Route::get('entries/handle/{date}', 'EntryController@findByDate');
+
+    //Preferences routes...
+    Route::group(['prefix' => 'preferences'], function() {
+        Route::get('/', 'SettingController@render');
+        Route::get('privacy', 'SettingController@renderPrivacy');
+    });
 });
 
 // User API routes...
