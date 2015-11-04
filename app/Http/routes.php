@@ -12,7 +12,7 @@
 */
 
 // Auth routes...
-Route::group(['prefix' => 'auth'], function () {
+Route::group(['prefix' => 'auth', 'middleware' => 'csrf'], function () {
     Route::get('login', 'FrontendController@login');
     Route::post('login', 'Auth\AuthController@postLogin');
     Route::get('logout', 'Auth\AuthController@getLogout');
@@ -32,7 +32,7 @@ Route::get('support-journal', 'FrontendController@support');
 Route::get('rid', 'EntryController@stats');
 
 // App routes...
-Route::group(['middleware' => 'auth', 'prefix' => 'journal'], function() {
+Route::group(['middleware' => ['auth', 'csrf'], 'prefix' => 'journal'], function() {
     Route::get('/', 'JournalController@home');
     Route::get('stats', 'JournalController@stats');
     Route::get('entries', 'EntryController@index');
@@ -51,6 +51,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'journal'], function() {
 });
 
 // User API routes...
-Route::group(['middleware' => 'auth', 'prefix' => 'api/user'], function() {
+Route::group(['middleware' => ['auth', 'csrf'], 'prefix' => 'api/user'], function() {
     Route::get('contribs', 'APIController@contribs');
 });

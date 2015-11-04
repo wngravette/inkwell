@@ -11,7 +11,8 @@
         "laravelcollective/html": "5.1.*",
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "aws/aws-sdk-php": "~3.0",
-        "yubico/u2flib-server": "0.1.*"
+        "yubico/u2flib-server": "0.1.*",
+        "lucadegasperi/oauth2-server-laravel": "5.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
