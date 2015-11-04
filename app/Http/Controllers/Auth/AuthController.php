@@ -63,9 +63,15 @@ class AuthController extends Controller
         $confirmation_code = str_random(50);
         $user_col = collect($data);
 
-        Mail::queue('email.verify', ['confirm_code' => $confirmation_code, 'name' => $data['first_name'], 'domain' => config('app.url'), 'title' => 'Welcome'], function ($m) use ($data) {
-            $m->to($data['email'], $data['first_name'])->subject('Please verify your email.');
-        });
+        Mail::queue('email.verify', [
+                    'domain'       => config('app.url'),
+                    'title'        => 'Welcome',
+                    'description'  => 'Please verify your Inkwell account.',
+                    'confirm_code' => $confirmation_code,
+                    'name'         => $data['first_name']
+                ], function ($m) use ($data) {
+                    $m->to($data['email'], $data['first_name'])->subject('Please verify your Inkwell account.');
+                });
 
         return User::create([
             'first_name' => $data['first_name'],
