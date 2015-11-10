@@ -1,17 +1,12 @@
-@extends('front.master')
-@section('additional-head')
-<script>
-$(document).ready(function() {
-    $('.header').backstretch("https://s3-ap-southeast-2.amazonaws.com/willng-me/journal/img/7.jpg");
-});
-</script>
-<script src="{{asset('pkg/login-pack/js/index.js')}}">
-    var login_modal = true;
-</script>
-<link rel="stylesheet" href="{{asset('pkg/login-pack/css/style.css')}}">
-<link rel="stylesheet" href="{{asset('pkg/login-pack/css/normalize.css')}}">
-@endsection
+@extends('auth.master')
 @section('content')
-@include('front.partials.header')
-@include('auth.partials.auth-block')
+<h1>Log in to {{config('app.app_name')}}</h1>
+{!! Form::open(['class' => 'pure-form pure-form-stacked']) !!}
+    <input class="pure-input-1" type="text" name="email" placeholder="Email"/>
+    <input class="pure-input-1" type="password" name="password" placeholder="Password"/>
+    <label for="remember" class="pure-checkbox">
+           <input id="remember" type="checkbox" name="remember"> Remember me
+       </label>
+    <button class="pure-button" type="submit" name="Submit">Login</button>
+{!! Form::close() !!}
 @endsection
