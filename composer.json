@@ -12,7 +12,8 @@
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "aws/aws-sdk-php": "~3.0",
         "yubico/u2flib-server": "0.1.*",
-        "lucadegasperi/oauth2-server-laravel": "5.0.*"
+        "lucadegasperi/oauth2-server-laravel": "5.0.*",
+        "barryvdh/laravel-cors": "0.7.x"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
