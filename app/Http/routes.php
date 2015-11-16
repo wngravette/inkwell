@@ -50,7 +50,17 @@ Route::group(['middleware' => ['auth', 'csrf'], 'prefix' => 'journal'], function
     });
 });
 
-// User API routes...
+// Web API routes...
 Route::group(['middleware' => ['auth', 'csrf'], 'prefix' => 'api/user'], function() {
     Route::get('contribs', 'APIController@contribs');
+});
+
+// Oauth API routes...
+Route::post('oauth/access_token', function() {
+    return Response::json(Authorizer::issueAccessToken());
+});
+Route::group(['middleware' => 'oauth', 'prefix' => 'mobile'], function() {
+    Route::post('test', ['middleware' => 'oauth', function() {
+        return "you're in";
+    }]);
 });
