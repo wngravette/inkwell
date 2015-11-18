@@ -61,6 +61,6 @@ Route::post('oauth/access_token', function() {
 });
 Route::group(['middleware' => 'oauth', 'prefix' => 'mobile'], function() {
     Route::post('test', ['middleware' => 'oauth', function() {
-        return "you're in";
+        return Authorizer::getResourceOwnerId();
     }]);
 });
