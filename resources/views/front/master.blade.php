@@ -5,12 +5,12 @@
         <title>{{config('app.app_name')}}. Write every day.</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{asset('css/font-awesome/css/font-awesome.min.css')}}">
-        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+        <link rel="stylesheet" href="{{asset('css/pure/pure-min.css')}}">
         <!--[if lte IE 8]>
-            <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+            <link rel="stylesheet" href="{{asset('css/pure/grids-responsive-old-ie-min.css')}}">
         <![endif]-->
         <!--[if gt IE 8]><!-->
-            <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+            <link rel="stylesheet" href="{{asset('css/pure/grids-responsive-min.css')}}">
         <!--<![endif]-->
         <link rel="stylesheet" href="{{asset('css/frontend.css')}}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
